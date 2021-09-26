@@ -1,0 +1,24 @@
+name: "音乐播放组件 CI"
+description: "为 vue3 + vite 开发的音乐组件编写的 GitHub action CI"
+author: "Youyi Qin"
+on: push
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node: ["16"]
+    name: Node ${{ matrix.node }} env
+    steps:
+      - uses: actions/checkout@v2
+      - name: Setup node
+        uses: actions/setup-node@v2
+        with:
+          node-version: ${{ matrix.node }}
+      - name: 构建和发布
+        uses: JamesIves/github-pages-deploy-action@master
+        env:
+          ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+          BRANCH: gh-pages
+          FOLDER: build
+          BUILD_SCRIPT: npm install && npm run build

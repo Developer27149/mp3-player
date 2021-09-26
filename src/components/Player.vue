@@ -79,7 +79,12 @@ const data = reactive({
 });
 const audioRef = ref(null);
 const curSong = computed(() => {
-  const { src, pic, artist, songName } = props.songList[data.curIdx];
+  const {
+    src = "1.mp3",
+    pic = "1.png",
+    artist = "林俊杰",
+    songName = "allways online",
+  } = props.songList[data.curIdx] || {};
   return {
     src,
     pic,
@@ -229,6 +234,7 @@ onMounted(() => {
       <LoopControl @change_mode="changeMode" :mode="data.v_loopMode" />
     </div>
     <SongListVue
+      v-if="props.songList.length > 0"
       :songList="props.songList"
       :setCurIdx="(idx) => (data.curIdx = idx)"
       :curIdx="data.curIdx"

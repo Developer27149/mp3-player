@@ -5,7 +5,7 @@
         v-for="(song, idx) in songList"
         :key="song.id"
         @click="() => handlePlay(idx)"
-        :class="{current:idx === curIdx}"
+        :class="{ current: idx === curIdx }"
       >
         <div class="item">
           <Icon
@@ -19,7 +19,7 @@
             {{ idx + 1 }}
           </span>
 
-          <span>{{ song.artist }}</span>
+          <span>{{ song.artist.length > 0 ? song.artist : "未知来源" }}</span>
           <span>{{ song.songName }}</span>
         </div>
       </li>

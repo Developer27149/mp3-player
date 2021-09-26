@@ -1,19 +1,13 @@
 <template>
-  <div class="music-avatar" :style="props.style">
-    <img
-      :class="{ play: isPlay, paused: !isPlay }"
-      :src="props.src"
-      alt=""
-      ref="imgRef"
-    />
+  <div
+    :class="{ play: isPlay, paused: !isPlay, 'music-avatar': true }"
+    :style="props.style"
+  >
     <div class="circle"></div>
   </div>
 </template>
 
 <script setup>
-import { ref } from "@vue/reactivity";
-import { watch } from "@vue/runtime-core";
-
 const props = defineProps({
   isPlay: {
     type: Boolean,
@@ -36,16 +30,6 @@ const props = defineProps({
     default: () => ({}),
   },
 });
-// const imgRef = ref(null);
-
-// watch(props, () => {
-//   imgRef.value.style.animationPlayState = props.isPlay ? "running" : "paused";
-//   // console.log(props.isPlay);
-//   // console.log(imgRef);
-//   // if (imgRef.value !== null) {
-//   //   imgRef.value.style.animationPlayState = "";
-//   // }
-// });
 </script>
 
 <style lang="scss" scoped>
@@ -61,28 +45,26 @@ const props = defineProps({
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: rgb(208, 150, 233);
+  // background-color: rgb(208, 150, 233);
+  // background-image: url(1.png);
+  background-image: v-bind("`url(${props.src})`");
+  background-repeat: no-repeat;
+  background-size: cover;
   position: relative;
   width: 96px;
   height: 96px;
   border-radius: 50%;
+  overflow: hidden;
   margin: v-bind("m");
-  img {
-    box-sizing: border-box;
-    display: block;
-    padding: v-bind("imgP");
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    position: absolute;
-    animation: ratote365 12s infinite linear;
-  }
-  .paused {
-    animation-play-state: paused;
-  }
-  .play {
-    animation-play-state: running;
-  }
+  animation: ratote365 12s infinite linear;
+  // img {
+  //   box-sizing: border-box;
+  //   display: block;
+  //   width: 96px;
+  //   height: 96px;
+  //   object-fit: cover;
+  //   position: absolute;
+  // }
   .circle {
     width: 1rem;
     height: 1rem;
@@ -101,5 +83,11 @@ const props = defineProps({
       top: 0.1rem;
     }
   }
+}
+.paused {
+  animation-play-state: paused;
+}
+.play {
+  animation-play-state: running;
 }
 </style>

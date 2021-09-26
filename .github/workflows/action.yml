@@ -14,6 +14,8 @@ jobs:
         run: |
           npm install
           npm run build
+          ls
+          ls build
 
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@4.1.5
@@ -21,4 +23,4 @@ jobs:
           ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
         with:
           branch: gh-pages # The branch the action should deploy to.
-          folder: build # The folder the action should deploy.
+          folder: ./build # The folder the action should deploy.

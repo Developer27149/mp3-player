@@ -9,6 +9,7 @@ jobs:
     steps:
       - name: Checkout 🛎️
         uses: actions/checkout@v2
+      - name: yarn config
         uses: borales/actions-yarn@v2.3.0
         with:
           cmd: install # will run `yarn install` command

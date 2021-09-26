@@ -3,6 +3,11 @@ on: [push]
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [16.x]
+
     steps:
       - name: Checkout 🛎️
         uses: actions/checkout@v2.3.1
@@ -14,8 +19,8 @@ jobs:
 
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@4.1.5
-        env:
-          ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+        # env:
+        #   ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
         with:
           branch: gh-pages # The branch the action should deploy to.
           folder: dist # The folder the action should deploy.

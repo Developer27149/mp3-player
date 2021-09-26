@@ -1,6 +1,9 @@
 name: "音乐播放组件 CI"
-author: "Youyi Qin"
-on: push
+
+on:
+  push:
+    branches: [main]
+
 jobs:
   build:
     runs-on: ubuntu-latest

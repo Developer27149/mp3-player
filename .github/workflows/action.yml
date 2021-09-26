@@ -1,5 +1,4 @@
 name: "音乐播放组件 CI"
-description: "为 vue3 + vite 开发的音乐组件编写的 GitHub action CI"
 author: "Youyi Qin"
 on: push
 jobs:

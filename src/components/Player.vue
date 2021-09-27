@@ -152,6 +152,13 @@ onMounted(() => {
     data.duration = audio.duration;
     audio.addEventListener("timeupdate", setCurTime);
     audio.addEventListener("ended", handlePlayEnd, onceOption);
+    audio.addEventListener("error", () => {
+      // 播放失败，资源 403
+      data.isPlay = false;
+      data.curDuration = 0;
+      data.curTime = 0;
+      alert("这首暂时不行，网易云拦住了😂");
+    });
     audio.addEventListener(
       "canplay",
       () => (data.isCanplay = true),

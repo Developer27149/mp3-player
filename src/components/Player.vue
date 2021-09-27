@@ -92,7 +92,7 @@ watch(data, () => {
   // mute and volume
   const audio = audioRef.value;
   if (audio) {
-    data.curDuration = audio.duration;
+    data.curDuration = audio?.duration || 0;
     audio.volume = data.v_volume;
     audio.muted = data.v_isMuted;
     if (audio.paused && data.isPlay) {
@@ -124,7 +124,7 @@ onMounted(() => {
   const audio = audioRef.value;
   const setCurTime = () => {
     if (audio.currentTime !== 0 && data.curTime < data.duration) {
-      data.curTime = audio.currentTime;
+      data.curTime = audio?.currentTime || 0;
     }
   };
   const handlePlayEnd = () => {

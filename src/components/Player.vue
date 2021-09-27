@@ -68,8 +68,8 @@ const curSong = computed(() => {
   const {
     src = "/1.mp3",
     pic = "/1.png",
-    artist = "林俊杰",
-    songName = "allways online",
+    artist = "未知",
+    songName = "未知",
   } = props.songList[data.curIdx] || {};
   return {
     src,

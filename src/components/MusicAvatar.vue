@@ -1,8 +1,6 @@
 <template>
-  <div
-    :class="{ play: isPlay, paused: !isPlay, 'music-avatar': true }"
-    :style="props.style"
-  >
+  <div class="music-avatar" :style="props.style">
+    <img :src="src" alt="" :class="{ play: isPlay, paused: !isPlay }" />
     <div class="circle"></div>
   </div>
 </template>
@@ -45,8 +43,6 @@ const props = defineProps({
   display: flex;
   justify-content: center;
   align-items: center;
-  // background-color: rgb(208, 150, 233);
-  // background-image: url(1.png);
   background-image: v-bind("`url(${props.src})`");
   background-repeat: no-repeat;
   background-size: cover;
@@ -56,15 +52,21 @@ const props = defineProps({
   border-radius: 50%;
   overflow: hidden;
   margin: v-bind("m");
-  animation: ratote365 12s infinite linear;
-  // img {
-  //   box-sizing: border-box;
-  //   display: block;
-  //   width: 96px;
-  //   height: 96px;
-  //   object-fit: cover;
-  //   position: absolute;
-  // }
+  img {
+    box-sizing: border-box;
+    display: block;
+    width: 96px;
+    height: 96px;
+    object-fit: cover;
+    position: absolute;
+    animation: ratote365 12s infinite linear;
+  }
+  .paused {
+    animation-play-state: paused;
+  }
+  .play {
+    animation-play-state: running;
+  }
   .circle {
     width: 1rem;
     height: 1rem;
@@ -83,11 +85,5 @@ const props = defineProps({
       top: 0.1rem;
     }
   }
-}
-.paused {
-  animation-play-state: paused;
-}
-.play {
-  animation-play-state: running;
 }
 </style>

@@ -1,26 +1,28 @@
 <template>
-  <Icon
-    :icon="`${
-      mode === SINGLE_LOOP
-        ? 'carbon:repeat-one'
-        : mode === ALL_LOOP
-        ? 'carbon:repeat'
-        : 'bi:music-note-list'
-    }`"
-    color="white"
-    width="1.2rem"
-    class="icon"
-    @click="
-      emits(
-        'change_mode',
+  <div class="container">
+    <Icon
+      :icon="`${
         mode === SINGLE_LOOP
-          ? ALL_LOOP
+          ? 'carbon:repeat-one'
           : mode === ALL_LOOP
-          ? LIST_LOOP
-          : SINGLE_LOOP
-      )
-    "
-  />
+          ? 'carbon:repeat'
+          : 'bi:music-note-list'
+      }`"
+      color="white"
+      width="1.2rem"
+      class="icon"
+      @click="
+        emits(
+          'change_mode',
+          mode === SINGLE_LOOP
+            ? ALL_LOOP
+            : mode === ALL_LOOP
+            ? LIST_LOOP
+            : SINGLE_LOOP
+        )
+      "
+    />
+  </div>
 </template>
 
 <script setup>
@@ -37,8 +39,17 @@ const emits = defineEmits(["change_mode"]);
 </script>
 
 <style lang="scss" scoped>
-.icon {
+.container {
+  width: 1.2rem;
+  height: 1.2rem;
   padding: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+}
+.icon {
+  // padding: 1rem;
   cursor: pointer;
 }
 </style>

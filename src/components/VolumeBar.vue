@@ -1,18 +1,23 @@
 <template>
   <div class="container">
-    <Icon
-      :icon="
-        isMuted
-          ? 'bx:bx-volume-mute'
-          : volume >= 0.5
-          ? 'bx:bx-volume-full'
-          : 'bx:bx-volume-low'
-      "
-      width="1.2rem"
-      color="#fff"
-      class="icon"
-      @click="emits('change_mute')"
-    />
+    <div class="icons">
+      <Icon
+        v-show="volume < 0.5"
+        :icon="isMuted ? 'bx:bx-volume-mute' : 'bx:bx-volume-low'"
+        width="1.2rem"
+        color="#fff"
+        class="icon"
+        @click="emits('change_mute')"
+      />
+      <Icon
+        v-show="volume >= 0.5"
+        :icon="isMuted ? 'bx:bx-volume-mute' : 'bx:bx-volume-full'"
+        width="1.2rem"
+        color="#fff"
+        class="icon"
+        @click="emits('change_mute')"
+      />
+    </div>
     <div class="progress" @click="modifyProgress"></div>
   </div>
 </template>
@@ -51,10 +56,18 @@ const modifyProgress = (e) => {
   justify-content: center;
   align-items: center;
   color: #fff;
-  .icon {
-    cursor: pointer;
-    padding-right: 0.6rem;
+  padding-top: 0.4rem;
+  .icons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-right: 1.2rem;
+    .icon {
+      cursor: pointer;
+      position: absolute;
+    }
   }
+
   .progress {
     position: relative;
     height: 4px;

@@ -23,31 +23,17 @@ const props = defineProps({
     type: Array,
     default: [
       {
-        src: "1.mp3",
-        pic: "1.png",
+        src: "/1.mp3",
+        pic: "/1.png",
         artist: "JJ Lin",
         songName: "Allways online",
         id: generateUUID(),
       },
       {
-        src: "2.mp3",
-        pic: "2.png",
+        src: "/2.mp3",
+        pic: "/2.png",
         songName: "山川",
         artist: "李荣浩",
-        id: generateUUID(),
-      },
-      {
-        src: "3.mp3",
-        pic: "1.png",
-        artist: "Jay",
-        songName: "一路向北",
-        id: generateUUID(),
-      },
-      {
-        src: "4.mp3",
-        pic: "2.png",
-        songName: "触不可及",
-        artist: "佚名",
         id: generateUUID(),
       },
     ],
@@ -80,8 +66,8 @@ const data = reactive({
 const audioRef = ref(null);
 const curSong = computed(() => {
   const {
-    src = "1.mp3",
-    pic = "1.png",
+    src = "/1.mp3",
+    pic = "/1.png",
     artist = "林俊杰",
     songName = "allways online",
   } = props.songList[data.curIdx] || {};

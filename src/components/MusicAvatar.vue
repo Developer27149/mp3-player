@@ -43,9 +43,6 @@ const props = defineProps({
   display: flex;
   justify-content: center;
   align-items: center;
-  background-image: v-bind("`url(${props.src})`");
-  background-repeat: no-repeat;
-  background-size: cover;
   position: relative;
   width: 96px;
   height: 96px;

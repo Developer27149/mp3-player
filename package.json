@@ -3,7 +3,7 @@
   "version": "0.0.7",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
+    "build": "vite build --base mp3-player",
     "serve": "vite preview",
     "deploy": "gh-pages -d dist"
   },
